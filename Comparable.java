@@ -1,3 +1,4 @@
 public interface Comparable {
-    int compareTo(Object o);	
+    int compareTo(Object o);
+    double value();
 }

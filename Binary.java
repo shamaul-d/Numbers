@@ -29,7 +29,7 @@ public class Binary implements Comparable{
       =====================================*/
     public Binary( int n ) {
 	_decNum = n;
-	_binNum = decToBinR(n);
+	_binNum = decToBin(n);
     }
 
 
@@ -74,7 +74,7 @@ public class Binary implements Comparable{
 	    return ans;
 	    }
 	else {
-	    return ans.substring(1);
+	    return ans.substring(0,ans.length()-1);
 	    }
     }
 
@@ -170,11 +170,11 @@ public class Binary implements Comparable{
       negative integer if this<input, positive integer otherwise
       =============================================*/
     public int compareTo(Object other ) {
-	if (other instanceof Binary) {
-	    if (_decNum == ((Binary)other)._decNum) {
+	if (other instanceof Comparable) {
+	    if (this.value() == ((Comparable)other).value()) {
 		return 0;
 	    }
-	    else if (_decNum > ((Binary)other)._decNum) {
+	    else if (this.value() > ((Comparable)other).value()) {
 		return 1;
 	    }
 	    else {
@@ -190,7 +190,10 @@ public class Binary implements Comparable{
 	    }
 	} 
     }
-
+    
+    public double value() {
+	return _decNum;
+    }
 
     //main method for testing
     public static void main( String[] args ) {

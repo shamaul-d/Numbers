@@ -22,7 +22,7 @@ public class SuperArray { // implements ListInt{
  
     //~~~~~INSTANCE VARS~~~~~
     //underlying container, or "core" of this data structure:
-    private int[] _data;
+    private Comparable[] _data;
 
     //position of last meaningful value
     private int _lastPos;
@@ -34,7 +34,7 @@ public class SuperArray { // implements ListInt{
     //~~~~~METHODS~~~~~
     //default constructor – initializes 10-item array
     public SuperArray() { 
-	_data = new int[10];
+	_data = new Comparable[10];
 	_lastPos = -1; //flag to indicate no lastpos yet
 	_size = 0;	
     }
@@ -59,7 +59,7 @@ public class SuperArray { // implements ListInt{
     //double capacity of this SuperArray
     private void expand() 
     { 
-	int[] temp = new int[ _data.length * 2 ];
+	Comparable[] temp = new Comparable[ _data.length * 2 ];
 	for( int i = 0; i < _data.length; i++ )
 	    temp[i] = _data[i];
 	_data = temp;
@@ -67,14 +67,14 @@ public class SuperArray { // implements ListInt{
 
 		
     //accessor -- return value at specified index
-    public int get( int index ) { return _data[index]; }
+    public Comparable get( int index ) { return _data[index]; }
 
 		
     //mutator -- set value at index to newVal, 
     //           return old value at index
-    public int set( int index, int newVal ) 
+    public Comparable set( int index, Comparable newVal ) 
     { 
- 	int temp = _data[index];
+ 	Comparable temp = _data[index];
 	_data[index] = newVal;
 	return temp;
     }
@@ -82,7 +82,7 @@ public class SuperArray { // implements ListInt{
 
     // ~~~~~~~~~~~~~~ PHASE II ~~~~~~~~~~~~~~
     //adds an item after the last item
-    public void add( int newVal ) {
+    public void add(Comparable newVal) {
 	if (_size == _data.length) {
 	    expand();
 	}
@@ -93,7 +93,7 @@ public class SuperArray { // implements ListInt{
 
     //inserts an item at index
     //shifts existing elements to the right
-    public void add( int index, int newVal ) {
+    public void add( int index, Comparable newVal ) {
 	if (_size == _data.length) {
 	    expand();
 	}
@@ -120,6 +120,26 @@ public class SuperArray { // implements ListInt{
 	return _size;
     }
 
+    public int linSearch(Comparable c) {
+	int ans = -1;
+	for (int ctr = 0; ctr < _size; ctr++) {
+	    if (c.equals(_data[ctr])) {
+		ans = ctr;
+	    }
+	}
+	return ans;
+    }
+
+    public boolean isSorted() {
+	boolean ans = false; 
+	for (int ctr = 0; ctr < _lastPos; ctr++) {
+	    if (_data[ctr].value() < _data[ctr+1].value()) {
+		return ans;
+	    }
+	}
+	return true;
+    }
+
     //main method for testing
     public static void main( String[] args ) 
     {
@@ -138,11 +158,12 @@ public class SuperArray { // implements ListInt{
 	*/
 	System.out.println("Printing empty SuperArray curtis...");
 	System.out.println(curtis);
-
-	for( int i = 0; i < curtis._data.length; i++ ) {
-	    curtis.set(i,i*2);
-	    curtis._size++; //necessary bc no add() method yet
-	}
+	
+	curtis.add(new Rational(1,3));
+	curtis.add(new Binary(14));
+	curtis.add(new Hexadecimal(40));
+	curtis.add(new Rational(7,11));
+	curtis.add(new Binary("1000"));
 
 	System.out.println("Printing populated SuperArray curtis...");
 	System.out.println(curtis);
@@ -157,7 +178,7 @@ public class SuperArray { // implements ListInt{
 	curtis.expand();
 	System.out.println(curtis);
 
-
+	/*
 	SuperArray mayfield = new SuperArray();
 	System.out.println("Printing empty SuperArray mayfield...");
 	System.out.println(mayfield);
@@ -186,7 +207,7 @@ public class SuperArray { // implements ListInt{
 	  System.out.println(mayfield);
 	  mayfield.add(1,77);
 	  System.out.println("Printing SuperArray mayfield post-insert...");
-	  System.out.println(mayfield);
+	  System.out.println(mayfield); */
 	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 	//*****INSERT ANY ADDITIONAL TEST CALLS HERE*****

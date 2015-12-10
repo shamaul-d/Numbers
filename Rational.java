@@ -104,7 +104,7 @@ public class Rational implements Comparable{
     
 
     public int compareTo(Object o){
-	if (! (o instanceof Rational)) {
+	if (! (o instanceof Comparable)) {
 	    if (o  == null) {
 		throw new NullPointerException("compareTo() input null");
 	    }
@@ -112,10 +112,8 @@ public class Rational implements Comparable{
 		throw new ClassCastException("compareTo() input not a Rational");
 	    }
 	}
-	int here = numer * ((Rational)o).denom;
-	int there = denom * ((Rational)o).numer;
-	if (here == there) {return 0;}
-	else if (there > here) {return -1;}
+	if (this.value() == ((Comparable)o).value()) {return 0;}
+	else if (this.value() > ((Comparable)o).value()) {return -1;}
 	else return 1;
 	
     }
@@ -127,6 +125,10 @@ public class Rational implements Comparable{
 	    return (0 == compareTo(ra));
 	}
 	else return false;
+    }
+    
+    public double value() {
+	return (double)numer / denom;
     }
     
     public static void main(String[] args){

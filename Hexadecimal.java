@@ -154,7 +154,7 @@ public class Hexadecimal implements Comparable{
       negative integer if this<input, positive integer otherwise
       =============================================*/
     public int compareTo( Object other ) {
-	if( !( other instanceof Hexadecimal ) ) {
+	if( !( other instanceof Comparable ) ) {
 	    if (other == null) {
 		throw new NullPointerException("compareTo() input null");
 	    }
@@ -162,14 +162,17 @@ public class Hexadecimal implements Comparable{
 		throw new ClassCastException( "compareTo() input not a Hexadecimal" );
 	}
 	else {
-	    if( this._decNum == ((Hexadecimal)other)._decNum )
+	    if( this.value() == ((Comparable)other).value() )
 		return 0;
-	    else if( this._decNum > ((Hexadecimal)other)._decNum )
+	    else if( this.value() > ((Comparable)other).value() )
 		return 1;
 	}
 	return -1;
     }
 
+    public double value() {
+	return _decNum;
+    }
 
     //main method for testing
     public static void main( String[] args ) {
