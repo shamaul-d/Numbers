@@ -103,9 +103,17 @@ public class Rational implements Comparable{
     }
     
 
-    public int compareTo(Rational o){
-	int here = numer * o.denom;
-	int there = denom * o.numer;
+    public int compareTo(Object o){
+	if (! (o instanceof Rational)) {
+	    if (o  == null) {
+		throw new NullPointerException("compareTo() input null");
+	    }
+	    else {
+		throw new ClassCastException("compareTo() input not a Rational");
+	    }
+	}
+	int here = numer * ((Rational)o).denom;
+	int there = denom * ((Rational)o).numer;
 	if (here == there) {return 0;}
 	else if (there > here) {return -1;}
 	else return 1;

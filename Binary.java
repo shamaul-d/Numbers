@@ -5,7 +5,7 @@
 
 //skeleton file for class Binary
 
-public class Binary {
+public class Binary implements Comparable{
 
     private int _decNum;
     private String _binNum;
@@ -169,7 +169,7 @@ public class Binary {
       post: Returns 0 if this Object is equal to the input Object,
       negative integer if this<input, positive integer otherwise
       =============================================*/
-    public int compareTo( Object other ) {
+    public int compareTo(Object other ) {
 	if (other instanceof Binary) {
 	    if (_decNum == ((Binary)other)._decNum) {
 		return 0;
@@ -182,7 +182,12 @@ public class Binary {
 	    }
 	}
 	else {   
-	    return -5;
+	    if (other == null) {
+		throw new NullPointerException("compareTo() input null");
+	    }
+	    else {
+		throw new ClassCastException("compareTo() input not a Binary");
+	    }
 	} 
     }
 

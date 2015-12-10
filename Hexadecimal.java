@@ -3,7 +3,7 @@ APCS1 pd10
 HW44 -- This or That or Fourteen Other Things 
 2015-12-08 */
 
-public class Hexadecimal {
+public class Hexadecimal implements Comparable{
 
     private int _decNum;
     private String _hexNum;
@@ -154,8 +154,13 @@ public class Hexadecimal {
       negative integer if this<input, positive integer otherwise
       =============================================*/
     public int compareTo( Object other ) {
-	if( !( other instanceof Hexadecimal ) )
-	    throw new ClassCastException( "compareTo() input not a Hexadecimal" );
+	if( !( other instanceof Hexadecimal ) ) {
+	    if (other == null) {
+		throw new NullPointerException("compareTo() input null");
+	    }
+	    else 
+		throw new ClassCastException( "compareTo() input not a Hexadecimal" );
+	}
 	else {
 	    if( this._decNum == ((Hexadecimal)other)._decNum )
 		return 0;

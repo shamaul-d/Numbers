@@ -18,7 +18,7 @@
  *  remove item (while maintaining "left-justification")
  *****************************/
 
-public class SuperArray implements ListInt{
+public class SuperArray { // implements ListInt{
  
     //~~~~~INSTANCE VARS~~~~~
     //underlying container, or "core" of this data structure:
@@ -124,7 +124,7 @@ public class SuperArray implements ListInt{
     public static void main( String[] args ) 
     {
 	SuperArray curtis = new SuperArray();
-	ListInt happy = new SuperArray();
+	/*	ListInt happy = new SuperArray();
 
 	System.out.println(happy);
 	happy.add(30);
@@ -135,7 +135,7 @@ public class SuperArray implements ListInt{
 	System.out.println(happy.size());
 	System.out.println(happy.get(0));
 	System.out.println(happy.set(4,17));
-
+	*/
 	System.out.println("Printing empty SuperArray curtis...");
 	System.out.println(curtis);
 
