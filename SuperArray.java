@@ -177,6 +177,7 @@ public class SuperArray { // implements ListInt{
 	System.out.println("Expanded SuperArray curtis:");
 	curtis.expand();
 	System.out.println(curtis);
+	System.out.println(curtis.linSearch(new Rational(7,11)));
 	System.out.println(curtis.isSorted());
 
 	/*
