@@ -177,6 +177,7 @@ public class SuperArray { // implements ListInt{
 	System.out.println("Expanded SuperArray curtis:");
 	curtis.expand();
 	System.out.println(curtis);
+	System.out.println(curtis.isSorted());
 
 	/*
 	SuperArray mayfield = new SuperArray();
